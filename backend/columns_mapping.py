@@ -1,10 +1,14 @@
+import os
+from dotenv import load_dotenv
 import pandas as pd
 from sqlalchemy import create_engine
-DB_HOST = "192.168.1.169"   
-DB_PORT = "5432"        
-DB_NAME = "postgres"
-DB_USER = "postgres"
-DB_PASS = "hcmK1qiP%251001%21"
+load_dotenv()
+
+DB_HOST = os.getenv("DB_HOST")   
+DB_PORT = os.getenv("DB_PORT")        
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASS = os.getenv("DB_PASS")
 
 connection_uri = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 engine = create_engine(connection_uri)
