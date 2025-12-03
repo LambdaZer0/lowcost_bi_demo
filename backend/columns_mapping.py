@@ -37,6 +37,8 @@ for cause in columns_list:
                                            ignore_index=True)
         print("DataFrame Updated.")
 
+cause_mapping_df['cause'] = cause_mapping_df['cause_value'].str.extract(r'(^\w+)')
+
 # writing new df into db
 try:
     cause_mapping_df.to_sql(name="cause_mapping_table", con=engine, if_exists="replace",
